@@ -44,7 +44,11 @@ def valid_proof(last_hash, proof):
     """
 
     # TODO: Your code here!
-    
+    guess = f"{proof}".encode()
+    # create a guess hash and hexdigest it
+    guess_hash = hashlib.sha256(guess).hexdigest()
+    # then return True if the guess hash has the valid number of leading zeros otherwise return False
+    return last_hash[-6:] == guess_hash[:6]
 
 if __name__ == '__main__':
     # What node are we interacting with?
