@@ -23,13 +23,24 @@ This sprint challenge is divided up into three parts:  Hash tables coding, block
 ## Interview Questions
 
 Explain in detail the workings of a dynamic array:
+> A dynamic array has an initial capacity. When a new item is added to the array, it checks if the array size has reach full capacity. If the full capacity has been reached, a new array of double the original capacity size is created. The items in the old array is copied over to the new array and the new item is inserted. The old array memory is released for re-usage. 
 * What is the runtime complexity to access an array, add or remove from the front, and add or remove from the back?
+> The runtime complexity to access an array is O(1)
+> The runtime complexity to add or remove from the front, and add or remove from the back of an array is O(n)
+
 * What is the worse case scenario if you try to extend the storage size of a dynamic array?
+> O(n)
 
 Explain how a blockchain is structured. What are the blocks, what is the chain? How is the data organized?
- 
-Explain how proof of work functions. How does it operate. How does this protect the chain from attack. What kind of attack is possible?
+ > The blockchain consists of blocks of data that are back-linked together. Each block is linked to the preceding block which makes the blockchain immutable.
+ > blocks are collections of confirmed transactions that are identified by a signature also known as the proof of work.
+ > The chain is the inter-connection of blocks beginning from the first ever block aka the genesis block
+ > The structure of the data is that the chain holds the blocks and each block holds a number of transactions. Each block also has a header or metadata which contains the timestamp when the block is created, the hash or signature of the previous block, a data structure of transactions, and a nonce
 
+Explain how proof of work functions. How does it operate. How does this protect the chain from attack. What kind of attack is possible?
+> The proof of work is a signature that certifies that a miner has done the required work (solved the complex computational problem) required to create a block. Usually every block has a specified signature that has a given number of leading zeros, now since the next block depends on the previous block, the miner basically writes an algorithm that manipulates the current block's signature until it matches a signature with the specified number of leading zeros by the previous block, when this signature is found, the miner broadcasts it to all other miners in the network, the miners validates the signature by checking if it has the number of leading zeros required to create a new block, when the signature is validated, the new block is confirmed.
+
+> Since each block only has one proof of work and also the amount of work required is high, it makes it difficult for attacks since altering a block would require re-mining the subsequent blocks. The kind of attack possible is double spending.
 ## Project Set Up
 
 #### [Hash Tables]
